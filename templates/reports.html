@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+
+<div class="my-3 mx-3">
+    <h1 class="text-center">Reports Visualization Dashboard</h1>
+
+    <div class="container-fluid">
+        <div>
+            <div class="card mx-3 p-3">
+                <h6 class="text-center"></h6>
+                <table id="mytable">
+
+                </table>
+                <h1 style="display:none" id="jsondata">{{data}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const dataTable = new simpleDatatables.DataTable("#mytable", {
+        searchable: true,
+        fixedHeight: true,
+        data: {
+            headings: ["Sl.No","End Year", "Intensity", "Sector", "Topic","Insight"]
+        }
+    });
+
+    const jsonData = document.getElementById('jsondata').innerText
+    const valData = JSON.parse(jsonData)
+
+    for(var i=0;i< 50  ;i++){
+        let srNo = i+1;
+        let endyear = valData[i].end_year
+        let intensity = valData[i].intensity
+        let sector = valData[i].sector
+        let topic = valData[i].topic
+        let insight = valData[i].insight
+        let region = valData[i].region
+        let start = valData[i].start_year
+        let impact = valData[i].impact
+        let added = valData[i].added
+        let published = valData[i].published
+        let country = valData[i].country
+        let relevance = valData[i].relevance
+        let pestle = valData[i].pestle
+        let source = valData[i].source
+        let title = valData[i].title
+        let likelihood = valData[i].likelihood
+        let newRow = [srNo,endyear, intensity, sector, topic, insight];
+        dataTable.rows.add(newRow);
+    }
+    
+</script>
+{% endblock scripts %}

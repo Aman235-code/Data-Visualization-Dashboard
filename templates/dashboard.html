@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+
+<div class="my-3 mx-3">
+    <h1 class="text-center">Data Visualization Dashboard</h1>
+
+    <div class="container-fluid">
+        <div>
+            <div class="card mx-3 p-3">
+                <h6 class="text-center"></h6>
+                <canvas id="relevance"></canvas>
+                <h1 style="display:none" id="jsondata">{{data}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+
+<script src="{% static 'js/index.js'  %}"></script>
+
+{% endblock scripts %}
